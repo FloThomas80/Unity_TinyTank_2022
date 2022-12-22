@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.SocialPlatforms.Impl;
 using static UnityEngine.GraphicsBuffer;
 
 public class Turret : BaseController
@@ -10,6 +11,9 @@ public class Turret : BaseController
     [SerializeField] private float DetectRadius;
     [SerializeField] private Collider TankCollider;
     [SerializeField] private GameObject AnimTur;
+
+    [SerializeField]
+    TinyTank_UI UiScript;
 
     [SerializeField]
     protected GameObject BulletSpawnPosition;
@@ -38,14 +42,14 @@ public class Turret : BaseController
         ShootTurret();
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision collision)
     {
-        if(AlreadyDead == false)
+        if(collision.gameObject.tag == "Bullet" && AlreadyDead == false)
         {
             AlreadyDead = true;
-
-        //DeadTurret.Play("Dead_Turret");
-        this.GetComponent<Turret>().enabled = false;
+            UiScript.ScoreUi = UiScript.ScoreUi+1;
+            //DeadTurret.Play("Dead_Turret");
+            this.GetComponent<Turret>().enabled = false;
         }
     }
 
