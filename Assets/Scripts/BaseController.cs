@@ -10,7 +10,7 @@ public class BaseController : MonoBehaviour
 
     public float CoolTime = 2f;
     [SerializeField] protected GameObject BulletPrefab;
-    [SerializeField] protected GameObject BulletSpawnPosition;
+    //[SerializeField] protected GameObject BulletSpawnPosition;
     [SerializeField] protected int BulletSpeed;
     //[SerializeField] protected GameObject LocalCanon;
     //private bool IsCool = true;
@@ -24,7 +24,7 @@ public class BaseController : MonoBehaviour
         TinyTank_UI playerScript = UI.GetComponent<TinyTank_UI>();
         CoolText = playerScript.CoolText;
     }
-    protected void fire()
+    protected void fire(GameObject BulletSpawnPosition)
     {
 
         GameObject BulletOne = Instantiate<GameObject>(BulletPrefab, BulletSpawnPosition.transform.position, BulletSpawnPosition.transform.rotation);
@@ -48,11 +48,11 @@ public class BaseController : MonoBehaviour
     {
 
         //pour voir le raycat ne pas oublier de se mettre en mode scene pas en game dans unity
-        RaycastHit Hit;
-        if (Physics.Raycast(BulletSpawnPosition.transform.position, BulletSpawnPosition.transform.up, out Hit))
-        {
-            Debug.DrawRay(BulletSpawnPosition.transform.position, BulletSpawnPosition.transform.up * 20f);
-        }
+        //RaycastHit Hit;
+        //if (Physics.Raycast(BulletSpawnPosition.transform.position, BulletSpawnPosition.transform.up, out Hit))
+        //{
+        //    Debug.DrawRay(BulletSpawnPosition.transform.position, BulletSpawnPosition.transform.up * 20f);
+        //}
     }
 
 }

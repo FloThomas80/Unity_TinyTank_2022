@@ -21,6 +21,8 @@ public class Tank : BaseController
     private Vector3 aimPoint;
     float TurretAngle;
 
+    [SerializeField] 
+    protected GameObject BulletSpawnPosition;
 
     [SerializeField]
     private GameObject m_BarrelPivot = null;
@@ -93,7 +95,7 @@ public class Tank : BaseController
         {
             if (IsCool == true)
             {
-                fire();
+                fire(BulletSpawnPosition);
                 //calling method From UI script
                 UiScript.TankCooldown();
                 StartCoroutine("CoolDown");

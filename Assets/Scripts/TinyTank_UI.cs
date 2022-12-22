@@ -25,7 +25,7 @@ public class TinyTank_UI : MonoBehaviour
         GameObject Tank = GameObject.Find("Tank");
         Tank playerScript = Tank.GetComponent<Tank>();
         CoolTime = playerScript.CoolTime;
-        CoolText.text = "";
+        CoolText.text = "READY !";
     }
 
 
@@ -49,7 +49,7 @@ public class TinyTank_UI : MonoBehaviour
             time += Time.deltaTime;
             yield return new WaitForSecondsRealtime(0);
         }
-        CoolText.text = "";
+        CoolText.text = "READY !";
         IsCool = true;
     }
 }

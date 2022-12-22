@@ -9,6 +9,10 @@ public class Turret : BaseController
     [SerializeField] private Material Mat_Alarm;
     [SerializeField] private float DetectRadius;
     [SerializeField] private Collider TankCollider;
+    [SerializeField] private GameObject AnimTur;
+
+    [SerializeField]
+    protected GameObject BulletSpawnPosition;
 
     //[SerializeField] protected GameObject BulletSpawnPosition;
 
@@ -16,36 +20,39 @@ public class Turret : BaseController
 
     private bool TankOut = true;
     private bool ReloadingTurret = false;
+    private bool AlreadyDead = false;
+    //private Animation DeadTurret;
 
-   
     // Start is called before the first frame update
     void Start()
     {
         Mat_Alarm.color = Color.red;
-        BulletSpeed = 10;
-        
+        BulletSpeed = 4000;
+        //DeadTurret = GetComponent<Animation>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit Hit;
-        if (Physics.Raycast(BulletSpawnPosition.transform.position, -BulletSpawnPosition.transform.up, out Hit) && (TankOut == false))
-        {
-            Debug.DrawRay(BulletSpawnPosition.transform.position, BulletSpawnPosition.transform.up * 20f);
-
-            if ((Hit.collider.gameObject == TankCollider.gameObject) && (ReloadingTurret == false) )
-            {
-                Debug.Log(" you've been locked by the turret !!! ");
-                ShootTurret();
-            }
-        }
-
-
+        Debug.DrawRay(BulletSpawnPosition.transform.position, BulletSpawnPosition.transform.up * 20f,Color.red);
+        ShootTurret();
     }
+
+    void OnCollisionEnter()
+    {
+        if(AlreadyDead == false)
+        {
+            AlreadyDead = true;
+
+        //DeadTurret.Play("Dead_Turret");
+        this.GetComponent<Turret>().enabled = false;
+        }
+    }
+
+
     private void OnTriggerEnter(Collider TankCollider) //test if someone enter collider and if is tank
     {
-        if (TankCollider.gameObject.name == "TankTrigger")
+        if (TankCollider.gameObject.name == "Tank" && AlreadyDead == false)
         {
             TankOut = false;
             StartCoroutine("LookAtTank");
@@ -55,7 +62,7 @@ public class Turret : BaseController
 
     private void OnTriggerExit(Collider TankCollider) //test if someone exit collider and if is tank
     {
-        if (TankCollider.gameObject.name == "TankTrigger")
+        if (TankCollider.gameObject.name == "Tank")
         { 
             TankOut = true;
             Mat_Alarm.color = Color.red;
@@ -64,11 +71,21 @@ public class Turret : BaseController
 
     void ShootTurret()
     {
-        if (ReloadingTurret == false)
+        RaycastHit Hit;
+
+        if (Physics.Raycast(BulletSpawnPosition.transform.position, BulletSpawnPosition.transform.up, out Hit) && (TankOut == false))
         {
-            fire();
+            Debug.Log(" you've been locked by the turret !!! ");
+
+            //Debug.Log(" the turret see :  "+ Hit.collider.gameObject.name);
+            //if (Hit.transform.tag == "Tank" && (ReloadingTurret == false))
+            if (Hit.collider.gameObject.CompareTag("Tank") && ReloadingTurret == false)
+                {
+            Debug.Log(" you've been locked by the turret !!! ");
+            fire(BulletSpawnPosition);
             ReloadingTurret = true;
             StartCoroutine("CoolTurret");
+            }
         }
     }
         IEnumerator LookAtTank()  //look at tank coroutine

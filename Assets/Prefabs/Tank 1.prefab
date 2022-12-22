@@ -643,14 +643,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4249180800089572094}
-  m_LocalRotation: {x: 0.0882858, y: -0, z: -0, w: 0.9960952}
-  m_LocalPosition: {x: 0, y: 7.13, z: -14.4}
+  m_LocalRotation: {x: 0.17252286, y: -0, z: -0, w: 0.98500556}
+  m_LocalPosition: {x: 0, y: 10.13, z: -17.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4249180801240893441}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 10.13, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 19.869, y: 0, z: 0}
 --- !u!20 &4249180800089572083
 Camera:
   m_ObjectHideFlags: 0
@@ -1438,51 +1438,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6938568688024433565
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7710567015670901031}
-  - component: {fileID: 8450221166497540470}
-  m_Layer: 0
-  m_Name: TankTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7710567015670901031
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6938568688024433565}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 25, z: 25}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 8430633615052884214}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8450221166497540470
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6938568688024433565}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.2856073, y: 0.4034067, z: 0.21340898}
-  m_Center: {x: -0.0000002002716, y: -0.013299856, z: 0.06269939}
 --- !u!1 &7247512103780297694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,7 +1869,7 @@ GameObject:
   - component: {fileID: 8430633615052884212}
   m_Layer: 0
   m_Name: Tank 1
-  m_TagString: Untagged
+  m_TagString: Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1933,7 +1888,6 @@ Transform:
   m_Children:
   - {fileID: 8430633616803915503}
   - {fileID: 4249180801240893441}
-  - {fileID: 7710567015670901031}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1948,8 +1902,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.9980335, y: 5.459899, z: 10.09198}
-  m_Center: {x: -0.26808214, y: 1.6153212, z: 0.42752242}
+  m_Size: {x: 6.6258583, y: 6.231623, z: 9.842954}
+  m_Center: {x: -0.040836334, y: 1.8554747, z: -0.21434832}
 --- !u!54 &8430633615052884203
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1959,7 +1913,7 @@ Rigidbody:
   m_GameObject: {fileID: 8430633615052884215}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 2
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1978,25 +1932,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaca877798bc9d344bff9ab5e72cb5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CoolTime: 2
   BulletPrefab: {fileID: 7061109767057306126, guid: 3625ca34c57c99e409e08b5f6bf567be, type: 3}
-  BulletSpawnPosition: {fileID: 4249180799754632609}
   BulletSpeed: 0
   _TankSpeed: 2
   _TankRotSpeed: 10
-  _TankTurretRotSpeed: 5
-  _TankCanonRotSpeed: 0
   _TankTurret: {fileID: 4249180801240893441}
   _TankCanon: {fileID: 4249180799979801429}
+  BulletSpawnPosition: {fileID: 4249180799754632609}
   m_BarrelPivot: {fileID: 4249180800746205035}
   m_HorizontalRotateSpeed: 5
   m_VerticalRotateSpeed: 50
   m_MaxHorizontalAngle: 45
   m_MaxUpAngle: 30
   m_MaxDownAngle: 5
-  CoolTime: 2
   rightRotationLimit: 30
   leftRotationLimit: 30
   UiScript: {fileID: 0}
+  BaseController: {fileID: 0}
 --- !u!1 &8430633616803915472
 GameObject:
   m_ObjectHideFlags: 0
