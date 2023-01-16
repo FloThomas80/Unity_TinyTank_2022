@@ -11,18 +11,17 @@ using UnityEngine.SocialPlatforms;
 
 public class Tank : BaseController
 {
+    [SerializeField] private GameObject _cameraLocator;
     private Rigidbody _Tank;
     [SerializeField] private float _TankSpeed;
     [SerializeField] private float _TankRotSpeed;
-    //[SerializeField] private float _TankTurretRotSpeed;
-    //[SerializeField] private float _TankCanonRotSpeed;
     [SerializeField] private Transform _TankTurret;
     [SerializeField] private Transform _TankCanon;
     private Vector3 aimPoint;
     float TurretAngle;
 
-    [SerializeField] 
-    protected GameObject BulletSpawnPosition;
+    //[SerializeField] 
+    //protected GameObject BulletSpawnPosition;
 
     [SerializeField]
     private GameObject m_BarrelPivot = null;
@@ -67,11 +66,21 @@ public class Tank : BaseController
 
         
 
-        _TankSpeed = 4f;
+        _TankSpeed = 15f;
         _TankRotSpeed = 30f;
-        BulletSpeed = 4000;
-}
+    }
 
+    private void AimToMouse()
+    {
+        Ray rayToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(rayToMouse.origin, rayToMouse.direction * 20f,Color.red);
+        RaycastHit hit;
+        if (Physics.Raycast(rayToMouse, out hit))
+        {
+            RotateHeadTo(new Vector3(hit.point.x, _head.transform.position.y, hit.point.z));
+        }  
+                
+    }
 
     public void SetAim(Vector3 AimPosition)
     {
@@ -95,7 +104,7 @@ public class Tank : BaseController
         {
             if (IsCool == true)
             {
-                fire(BulletSpawnPosition);
+                fire();
                 //calling method From UI script
                 UiScript.TankCooldown();
                 StartCoroutine("CoolDown");
@@ -149,4 +158,11 @@ public class Tank : BaseController
         _TankTurret.transform.localRotation = Quaternion.Euler(0, m_HorizontalAngle, 0);
         m_BarrelPivot.transform.localRotation = Quaternion.Euler(m_VerticalAngle, 0, 0);
     }
+    protected override void Destruction()
+    {
+
+        _cameraLocator.transform.SetParent(null);
+        base.Destruction();
+    }
+
 }

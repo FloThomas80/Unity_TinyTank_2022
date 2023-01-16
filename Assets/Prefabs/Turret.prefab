@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1358646716446402475}
   - component: {fileID: 4381141669728067465}
-  - component: {fileID: 209823010793877567}
-  - component: {fileID: 5010564680259371172}
-  - component: {fileID: 9158172327144180804}
   - component: {fileID: 1632837765}
+  - component: {fileID: 209823010793877567}
   - component: {fileID: 1632837766}
+  - component: {fileID: 5010564680259371172}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Turret
@@ -50,59 +49,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90e7e6cb3ede2346b856e64ed99aba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LifePoint: 1
   CoolTime: 2
   BulletPrefab: {fileID: 7061109767057306126, guid: 3625ca34c57c99e409e08b5f6bf567be, type: 3}
-  BulletSpeed: 1000
   TotalTurret: 0
+  _head: {fileID: 4950816366092680835}
   Mat_Alarm: {fileID: 2100000, guid: a17756a29d6045341a3fb405eb526bf1, type: 2}
   DetectRadius: 0
   TankCollider: {fileID: 0}
-  AnimTur: {fileID: 0}
+  _target: {fileID: 8430633615052884215, guid: 515ce21e88453704e9dbdf1ae49e6726, type: 3}
   UiScript: {fileID: 0}
   BulletSpawnPosition: {fileID: 2850820005080148012}
   TurretRotateSpeed: 1
---- !u!135 &209823010793877567
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358646716446402472}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 39.43
-  m_Center: {x: 0, y: -2.61, z: 0}
---- !u!65 &5010564680259371172
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358646716446402472}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.093528, y: 8.619886, z: 5.176506}
-  m_Center: {x: 0.1382947, y: 1.0895743, z: 0.041488647}
---- !u!111 &9158172327144180804
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358646716446402472}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: d5d042c03c49b4448a2faf7e113e3afb, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: d5d042c03c49b4448a2faf7e113e3afb, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 1
-  m_CullingType: 0
 --- !u!54 &1632837765
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -119,6 +77,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &209823010793877567
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358646716446402472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 39.43
+  m_Center: {x: 0, y: -2.61, z: 0}
 --- !u!65 &1632837766
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -132,6 +103,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9586048, z: 7.9925003}
   m_Center: {x: 0, y: 2.2438884, z: 3.4962502}
+--- !u!65 &5010564680259371172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358646716446402472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.093528, y: 8.619886, z: 5.176506}
+  m_Center: {x: 0.1382947, y: 1.0895743, z: 0.041488647}
 --- !u!1 &2850820005080148012
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +251,11 @@ PrefabInstance:
 --- !u!4 &2709137090417181284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1302255781129813578, guid: 681456b6c73a6744ca07bdb9628a3145, type: 3}
+  m_PrefabInstance: {fileID: 5221286672975119314}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4950816366092680835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 681456b6c73a6744ca07bdb9628a3145, type: 3}
   m_PrefabInstance: {fileID: 5221286672975119314}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5764332566669993017 stripped
